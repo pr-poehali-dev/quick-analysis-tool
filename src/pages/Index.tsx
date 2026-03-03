@@ -184,7 +184,11 @@ export default function Index() {
           </div>
         </section>
 
-        <section id="features" className="flex min-w-full snap-start items-center justify-center px-4 py-20">
+        <section
+          id="features"
+          className="relative min-w-full snap-start overflow-y-auto px-4 pt-24 pb-10 hide-scrollbar flex items-start md:items-center justify-center"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
           <div className="mx-auto max-w-7xl w-full">
             <Feature />
           </div>
