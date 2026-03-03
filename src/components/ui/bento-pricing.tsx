@@ -139,19 +139,6 @@ export function BentoPricing() {
       </div>
 
       <PricingCard
-        titleBadge="РАЗОВАЯ УБОРКА"
-        priceLabel="По запросу"
-        features={[
-          "Комплексная генеральная уборка",
-          "Санитарная обработка помещений",
-          "Мытьё окон и фасадов",
-          "Уборка после ремонта",
-        ]}
-        className="lg:col-span-3"
-        cta="Запросить цену"
-      />
-
-      <PricingCard
         titleBadge="ОФИСЫ"
         priceLabel="Инд. расчёт"
         features={[
