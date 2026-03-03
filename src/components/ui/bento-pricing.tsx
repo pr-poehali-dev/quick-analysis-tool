@@ -84,7 +84,7 @@ export function BentoPricing() {
         className={cn(
           "bg-white/5 border-white/10 relative w-full overflow-hidden rounded-md border-2",
           "backdrop-blur-sm",
-          "lg:col-span-5",
+          "lg:col-span-8",
         )}
       >
         <DotPattern width={5} height={5} />
@@ -146,7 +146,7 @@ export function BentoPricing() {
           "Уход за рабочими зонами и переговорными",
           "Санитарные узлы по стандарту ESIS",
         ]}
-        className="lg:col-span-4"
+        className="lg:col-span-3"
         cta="Рассчитать"
       />
 
@@ -158,7 +158,7 @@ export function BentoPricing() {
           "Повышенные стандарты дезинфекции",
           "Контроль доступа и конфиденциальность",
         ]}
-        className="lg:col-span-4"
+        className="lg:col-span-3"
         cta="Рассчитать"
       />
 
@@ -171,7 +171,7 @@ export function BentoPricing() {
           "Отчётность и акты выполненных работ",
           "SLA и гарантия качества",
         ]}
-        className="lg:col-span-8"
+        className="lg:col-span-2"
         cta="Связаться"
       />
     </div>
