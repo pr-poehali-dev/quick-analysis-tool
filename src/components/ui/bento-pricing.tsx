@@ -16,11 +16,16 @@ type PricingCardProps = {
 function PricingCard({
   titleBadge,
   priceLabel,
-  priceSuffix = "/мес",
+  priceSuffix = "",
   features,
-  cta = "Подписаться",
+  cta = "Связаться",
   className,
 }: PricingCardProps) {
+  const scrollToContact = () => {
+    const section = document.getElementById("contact")
+    if (section) section.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" })
+  }
+
   return (
     <div
       className={cn(
@@ -38,6 +43,7 @@ function PricingCard({
           <Button
             variant="outline"
             size="sm"
+            onClick={scrollToContact}
             className="bg-white/5 text-white border-white/20 hover:bg-white/10 font-open-sans-custom text-xs"
           >
             {cta}
@@ -49,7 +55,7 @@ function PricingCard({
         <span className="font-mono text-3xl font-semibold tracking-tight text-white [text-shadow:_0_4px_20px_rgb(0_0_0_/_60%)]">
           {priceLabel}
         </span>
-        {priceLabel.toLowerCase() !== "бесплатно" && priceLabel !== "0 ₽" && (
+        {priceSuffix && (
           <span className="text-gray-300 text-xs font-open-sans-custom">{priceSuffix}</span>
         )}
       </div>
@@ -67,6 +73,11 @@ function PricingCard({
 }
 
 export function BentoPricing() {
+  const scrollToContact = () => {
+    const section = document.getElementById("contact")
+    if (section) section.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" })
+  }
+
   return (
     <div className="grid grid-cols-1 gap-1.5 md:grid-cols-2 lg:grid-cols-8">
       <div
@@ -91,33 +102,32 @@ export function BentoPricing() {
         </div>
         <div className="flex items-center gap-3 p-3">
           <Badge variant="secondary" className="bg-white/10 text-white border-white/20 font-open-sans-custom text-xs">
-            ПРЕМИУМ
+            ДОЛГОСРОЧНЫЙ КОНТРАКТ
           </Badge>
           <Badge
             variant="outline"
             className="hidden lg:flex bg-white/5 text-white border-white/20 font-open-sans-custom text-xs"
           >
-            <SparklesIcon className="me-1 size-3" /> Популярный
+            <SparklesIcon className="me-1 size-3" /> Выгодно
           </Badge>
           <div className="ml-auto">
-            <Button size="sm" className="bg-white text-black hover:bg-gray-100 font-open-sans-custom text-xs">
-              Подписаться
+            <Button size="sm" onClick={scrollToContact} className="bg-white text-black hover:bg-gray-100 font-open-sans-custom text-xs">
+              Обсудить условия
             </Button>
           </div>
         </div>
         <div className="flex flex-col p-3 lg:flex-row">
           <div className="pb-2 lg:w-[30%]">
             <span className="font-mono text-3xl font-semibold tracking-tight text-white [text-shadow:_0_4px_20px_rgb(0_0_0_/_60%)]">
-              2 000 ₽
+              По договору
             </span>
-            <span className="text-gray-300 text-xs font-open-sans-custom">/мес</span>
           </div>
           <ul className="text-gray-300 grid gap-2 text-xs lg:w-[70%] font-open-sans-custom">
             {[
-              "2 000 ₽ кредитов включено ежемесячно",
-              "Докупайте кредиты сверх месячного лимита",
-              "5x увеличенный лимит вложений",
-              "Импорт дизайнов из популярных инструментов",
+              "Фиксированная стоимость на весь период",
+              "Персональный менеджер и план обслуживания",
+              "Приоритетный выезд и реакция на заявки",
+              "Регулярные проверки качества по стандарту ESIS",
             ].map((f, i) => (
               <li key={i} className="flex items-center gap-2">
                 <Check className="w-[1.05rem] h-[1.05rem] text-white flex-shrink-0" strokeWidth={3} />
@@ -129,47 +139,50 @@ export function BentoPricing() {
       </div>
 
       <PricingCard
-        titleBadge="СТАРТ"
-        priceLabel="0 ₽"
+        titleBadge="РАЗОВАЯ УБОРКА"
+        priceLabel="По запросу"
         features={[
-          "500 ₽ кредитов включено ежемесячно",
-          "Деплой приложений в облако",
-          "Визуальное редактирование",
-          "Синхронизация с Git",
+          "Комплексная генеральная уборка",
+          "Санитарная обработка помещений",
+          "Мытьё окон и фасадов",
+          "Уборка после ремонта",
         ]}
         className="lg:col-span-3"
-        cta="Начать"
+        cta="Запросить цену"
       />
 
       <PricingCard
-        titleBadge="КОМАНДА"
-        priceLabel="3 000 ₽"
-        priceSuffix="/чел/мес"
+        titleBadge="ОФИСЫ"
+        priceLabel="Инд. расчёт"
         features={[
-          "3 000 ₽ кредитов на участника ежемесячно",
-          "Единый биллинг и управление командой",
-          "Общие чаты и совместная работа",
+          "Ежедневная или еженедельная уборка",
+          "Уход за рабочими зонами и переговорными",
+          "Санитарные узлы по стандарту ESIS",
         ]}
         className="lg:col-span-4"
+        cta="Рассчитать"
       />
 
       <PricingCard
-        titleBadge="БИЗНЕС"
-        priceLabel="10 000 ₽"
-        priceSuffix="/чел/мес"
-        features={["3 000 ₽ кредитов на участника ежемесячно", "Отключение обучения по умолчанию", "Полный доступ к API"]}
-        className="lg:col-span-4"
-      />
-
-      <PricingCard
-        titleBadge="КОРПОРАЦИЯ"
-        priceLabel="По запросу"
-        priceSuffix=""
+        titleBadge="БАНКИ И ТЦ"
+        priceLabel="Инд. расчёт"
         features={[
-          "Отключение обучения по умолчанию",
-          "SAML SSO",
-          "Приоритетный доступ",
-          "Персональная поддержка",
+          "Работа в нерабочие часы",
+          "Повышенные стандарты дезинфекции",
+          "Контроль доступа и конфиденциальность",
+        ]}
+        className="lg:col-span-4"
+        cta="Рассчитать"
+      />
+
+      <PricingCard
+        titleBadge="КОРПОРАТИВНЫЙ"
+        priceLabel="Договорная"
+        features={[
+          "Несколько объектов в ЦФО",
+          "Единый менеджер и единый счёт",
+          "Отчётность и акты выполненных работ",
+          "SLA и гарантия качества",
         ]}
         className="lg:col-span-8"
         cta="Связаться"
